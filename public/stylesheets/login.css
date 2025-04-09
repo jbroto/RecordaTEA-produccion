@@ -1,0 +1,97 @@
+.cont-size{
+    min-height: 100vh;
+}
+
+.size{
+    min-height: auto;
+}
+
+.back-form{
+    background-color: #F9F7F7;
+}
+
+.color-tit{
+    color: #213555;
+}
+
+.letra-form{
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-control {
+    background-color: #F9F7F7;
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: #c9c8c7;
+}
+
+.form-select {
+    background-color: #F9F7F7;
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: #c9c8c7;
+}
+
+.form-control:focus {
+    background-color: #ffffff;
+    border-color: #213555;
+    box-shadow: 0 0 2px #213555;
+}
+
+.form-select:focus {
+    background-color: #ffffff;
+    border-color: #213555;
+    box-shadow: 0 0 2px #213555;
+}
+
+
+.input-group-text {
+    background-color: #34425a00;
+    color: #213555;
+    border-color: #c9c8c7;
+}
+
+a{
+    color: #213555;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.btn-ver{
+    border-color: #c9c8c7;
+    color: #213555;
+}
+
+.btn-ver:hover{
+    background-color: #213555;
+    color: #F9F7F7;
+    border-color: #213555;
+}
+
+h2{
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.opcion:hover {
+    background-color: #213555;
+    color: #F9F7F7;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: #213555;
+    --bs-tooltip-color: #F9F7F7;
+}
+
+.info-span{
+    position: relative;
+    top: -0.5em;
+    cursor: pointer;
+    font-size: small;
+    margin-left: 0em;
+}
+
+.recordaTEA-log:hover{
+    transform: none;
+}

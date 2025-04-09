@@ -1,0 +1,231 @@
+<head>
+    <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+</head>
+
+    <body>
+        <%- include("navbarTEA") %>
+        <div class="modal fade" id="emocionModal" tabindex="-1" aria-labelledby="emocionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="emocionnModalLabel">Seleccionar una emocion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row pb-3">
+                            <div class="col-lg-4 col-md-4 mt-3 d-flex">
+                                <div class="card" id="card-aburrido">
+                                    <img src="/images/emotions/aburrido.png" class="card-img">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 mt-3 d-flex">
+                                <div class="card" id="card-alegre">
+                                    <img src="/images/emotions/alegre.png" class="card-img">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 mt-3 d-flex">
+                                <div class="card" id="card-asustado">
+                                    <img src="/images/emotions/asustado.png" class="card-img">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 mt-3 d-flex">
+                                <div class="card" id="card-enfadado">
+                                    <img src="/images/emotions/enfadado.png" class="card-img">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 mt-3 d-flex">
+                                <div class="card" id="card-triste">
+                                    <img src="/images/emotions/triste.png" class="card-img">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 mt-3 d-flex">
+                                <div class="card" id="card-sorprendido">
+                                    <img src="/images/emotions/sorprendido.png" class="card-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer dflex justify-content-between align-items-center">
+                        <div class="no-border col-lg-2 col-md-3 col-sm-4 text-center" style="cursor:pointer"
+                            data-bs-dismiss="modal">
+
+                            <img class="card-img img-fluid" src="/images/config/cancelar.png" alt="Cancelar entrada"
+                                style="max-width: 150px; max-height: 150px; cursor: pointer;">
+
+                            <p class="card-title texto-boton">CANCELAR</p>
+                        </div>
+                        <div class="no-border col-lg-2 col-md-3 col-sm-4 text-center" style="cursor:pointer"
+                            id="addEmocionButton">
+
+                            <img class="card-img img-fluid" src="/images/config/tick.png" alt="Añadir entrada"
+                                style="max-width: 150px; max-height: 150px; cursor: pointer;">
+
+                            <p class="card-title texto-boton">AÑADIR</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container justify-content-center mt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <label for="fecha">Fecha:</label>
+                        <div class="me-3 mt-0 ms-2">
+                            <input type="date" class="form-control no-editable" id="fecha-edit" name="fecha"
+                                value="<%= entrada.fecha_editable %>" readonly>
+                        </div>
+
+                        <label for="hora">Hora:</label>
+                        <div class="me-3 mt-0 ms-2">
+                            <input type="time" class="form-control no-editable" id="hora-edit" name="hora"
+                                value="<%= entrada.hora_registro %>" readonly>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button id="editar-btn-edit" class="btn btn-outline-secondary">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                            <button id="cancel-btn-edit" class="btn btn-outline-secondary" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                </svg></i> Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container d-flex mt-3">
+            <div class="container margen-manage" id="containerPrincipal"
+                style="border: 2px solid black; border-radius: 3px;">
+                <div class="row m-3">
+                    <h5>Registro:</h5>
+                    <div class="container mt-3 col-lg-10 col-md-10 mt-3"
+                        style="border: 2px solid black; border-radius: 3px;">
+                        <div class="row p-3 contenedorPictogramas"
+                            id="<%= config.texto ? 'contenedorTexto' : 'contenedorRegistrosEdit' %>"">
+                        <% if(config.texto){%>
+                            <form class=" w-100 h-100 d-flex flex-column">
+                            <div class="flex-grow-1">
+                                <textarea class="form-control w-100" aria-label="With textarea" id="text-area-edit"
+                                    placeholder="Escribe aquí la entrada."
+                                    style=" min-height: 10em; resize: vertical;"><%= entrada.cuerpo %></textarea>
+                            </div>
+                            </form>
+                            <%} %>
+                                <% entrada.tarjetas.forEach(function(item) { %>
+                                    <% if (!item.imagen || item.imagen.length===0) { %>
+                                        <!-- TIPO DE PICTOGRAMA -->
+                                        <div class="col-auto">
+                                            <div class="d-flex">
+                                                <div class="card mb-3" id="<%= item.id_tarjeta %>" style="object-fit: contain; align-items: center;">
+                                                    <img src="<%= item.enlace %>" class="card-img tamaño-texto">
+                                                    <% if(config.picto_texto)  { %>
+                                                        <h5 class="nombre-pictograma text-center"> <%= item.texto %></h5>
+                                                        <% }%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } else { %>
+                                            <!-- TIPO DE TARJETA -->
+                                            <div class="col-lg-2 col-md-3 mt-3">
+                                                <div class="dflex">
+                                                    <div class="card" id="<%= item.id_tarjeta %>">
+                                                        <img src="<%=item.imagen %>" class="card-img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                                <% }); %>
+                        </div>
+                    </div>
+                    <% if(!config.texto){%>
+                        <!-- Modal para la emoción, donde cambiamos la imagen si existe una emoción -->
+                        <div class="container d-flex justify-content-center align-items-center mt-3 col-lg-2 col-md-2 mt-3"
+                             data-bs-toggle="modal"
+                            data-bs-target="#emocionModal">
+                            <div class="card" id="cardEmocionEdit">
+                                <!-- Si existe emocionSeleccionada, mostramos la imagen que se pasó, si no, mostramos la predeterminada -->
+                                <img src="<%= entrada.emocion || '/images/emotions/emociones.png' %>" class="card-img"
+                                    id="emocionSeleccionada">
+                            </div>
+                        </div>
+                        <%}%>
+                </div>
+
+                <% if(!config.texto){%>
+                    <div class="row m-3 mt-5">
+                        <div class="container mt-3 borde-cont" style="border: 2px solid black; border-radius: 3px;">
+                            <div class="row pb-3 contenedorPictogramas color-voc" id="contenedorVocabulario">
+                                <% vocabulario.forEach(function(item) { %>
+                                    <% if (!item.imagen || item.imagen.length===0) { %>
+                                        <!-- TIPO DE PICTOGRAMA -->
+                                        <div class="col-lg-2 col-md-3 mt-3">
+                                            <div class="dflex">
+                                                <div class="card" id="<%= item.idTarjeta %>">
+                                                    <img src="<%= item.enlace %>" class="card-img">
+                                                    <% if(config.picto_texto)  { %>
+                                                        <h5 class="nombre-pictograma text-center"> <%= item.texto %></h5>
+                                                        <% }%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } else { %>
+                                            <!-- TIPO DE TARJETA -->
+                                            <div class="col-lg-2 col-md-3 mt-3">
+                                                <div class="dflex">
+                                                    <div class="card" id="<%= item.idTarjeta %>">
+                                                        <img src="data:<%= item.mimetype %>;base64,<%= item.imagen.toString('base64') %>"
+                                                            class="card-img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+                        <div class="container mt-5 pb-5">
+                            <div class="row d-flex justify-content-center">
+                                <div class="card no-border col-lg-2 col-md-3 col-sm-4 text-center"
+                                    style="cursor:pointer">
+                                    <a href="/diario">
+                                        <img class="card-img img-fluid" src="/images/config/cancelar.png"
+                                            alt="Cancelar entrada"
+                                            style="max-width: 150px; max-height: 150px; cursor: pointer;">
+                                    </a>
+                                    <p class="card-title texto-boton">CANCELAR</p>
+                                </div>
+                                <div class="card no-border col-lg-2 col-md-3 col-sm-4 text-center"
+                                    style="cursor:pointer" id="updateButton">
+
+                                    <img class="card-img img-fluid" src="/images/config/tick.png" alt="Añadir entrada"
+                                        style="max-width: 150px; max-height: 150px; cursor: pointer;">
+
+                                    <p class="card-title texto-boton">ACTUALIZAR</p>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+
+        <div class="container finale"></div>
+
+        <!-- Formulario oculto para enviar los datos -->
+        <form id="registrosFormEdit" action="/diario/submit-edit-entry" method="POST" style="display: none;">
+            <input type="hidden" name="registros" id="registrosEditadosInput">
+        </form>
+
+        <script src="/javascripts/addRegistros.js"></script>
+        <script src="/javascripts/editRegistros.js"></script>
+        <script src="https://unpkg.com/sortablejs-make/Sortable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+        <script src="/javascripts/sortableCards.js"></script>
+    </body>

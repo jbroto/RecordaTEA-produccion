@@ -1,0 +1,140 @@
+<head>
+  <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+</head>
+  <body>
+    <%- include("navbarTEA") %>
+    <!-- MODAL DE CONFIRMACIÓN DE BORRADO -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+          <h5 class="mb-3">¿Confirmar borrar entrada?</h5>
+          <div class="d-flex justify-content-center gap-4">
+            <!-- Botón Volver -->
+            <div class="card no-border d-flex text-center">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                <img src="/images/config/botonVolver.png" alt="Volver">
+              </button>
+              <p class="card-title texto-boton">VOLVER</p>
+            </div>
+
+            <!-- Botón Confirmar Borrar -->
+            <div class="card no-border d-flex text-center">
+              <a id="confirm-DeleteBtn" class="btn btn-light">
+                <img src="/images/config/botonBorrar.png" alt="Borrar">
+              </a>
+              <p class="card-title texto-boton">BORRAR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="container" id="columnaVistaDiario">
+      <div class="row mt-4">
+        <div class="d-flex justify-content-center">
+          <div class="card no-border d-flex text-center justify-content-center">
+            <a class="nav-link" href="/diario/add-entrada">
+              <img class="card-img boton-add-entry" src="/images/config/add.png" alt="Añadir entrada al diario">
+            </a>
+            <p class="card-title texto-boton">AÑADIR ENTRADA</p>
+          </div>
+        </div>
+
+        <hr class="my-4 bg-success">
+
+        <% entradas.forEach(function(item) { %>
+          <div class="row">
+            <div class="d-flex align-items-center text-start">
+              <h1 class="mb-0 mt-0">
+                <%= item.fecha_registro %> -
+              </h1>
+              <h2 class="titulo-hora mb-0 mt-0 fs-3 ms-2">
+                <%= item.hora_registro %>
+              </h2>
+            </div>
+
+            <div class="d-flex gap-3 mt-4" id="<%= item.idEntrada %>">
+
+              <% if (item.emocion !=null) { %>
+                <div class="card tamaño-lista-notexto m-0 align-items-start justify-content-start">
+                  <img class="card-img-top" src="<%= item.emocion %>">
+                </div>
+                <div class="vr mx-2" style="width: 4px; background-color: #000; height: 7em; border-radius: 10px;">
+                </div>
+                <% } %>
+
+                  <% if (item.tipo==="Picto" ) { %>
+                    <div class="row d-flex">
+                      <% item.tarjetas.forEach(function(picto) { %>
+                        <%if (!config.picto_texto){%>
+                          <div class="col-auto">
+                            <div class="card tamaño-lista-notexto">
+                              <img class="card-img-top" src="<%= picto.enlace || picto.imagen %>">
+                            </div>
+                          </div>
+                          <%}%>
+                            <% if(config.picto_texto) { %>
+                              <div class="col-auto">
+                                <div class="card p-1 mb-2" style="object-fit: contain; align-items: center;">
+                                  <img class="card-img-top tamaño-texto" src="<%= picto.enlace || picto.imagen %>">
+                                  <h6 class="card-title nombre-pictograma text-center">
+                                    <%= picto.texto %>
+                                  </h6>
+                                </div>
+                              </div>
+                              <% }%>
+                                <% }); %>
+                                  <% } else { %>
+                                    <div class="me-2">
+                                      <p class="parrafo">
+                                        <%= item.cuerpo %>
+                                      </p>
+                                    </div>
+                                    <% } %>
+                    </div>
+
+                    <!-- CONTENEDOR DE BOTONES A LA DERECHA -->
+                    <div class="d-flex align-items-center gap-3 ms-auto">
+
+                      <!-- VER ENTRADA -->
+                      <div class="card no-border tamaño-lista d-flex text-center">
+                        <a href="/diario/view-entry/<%= item.idEntrada %>">
+                          <img class="card-img-top" src="/images/config/ir.png" alt="Ver entrada del diario">
+                        </a>
+                        <p class="card-title texto-boton">VER</p>
+                      </div>
+
+                      <!-- BORRAR ENTRADA -->
+                      <div class="card no-border tamaño-lista d-flex text-center">
+                        <a href="#" class="open-delete-modal" data-id="<%= item.idEntrada %>" data-bs-toggle="modal"
+                          data-bs-target="#confirmDeleteModal">
+                          <img class="card-img-top" src="/images/config/botonBorrar.png" alt="Borrar entrada">
+                        </a>
+                        <p class="card-title texto-boton">BORRAR</p>
+                      </div>
+
+                    </div>
+            </div>
+
+            <hr class="my-4 bg-success mt-5">
+          </div>
+          <% }); %>
+
+      </div>
+    </section>
+
+    <!-- SCRIPT PARA PASAR EL ID AL MODAL -->
+    <script>
+      $(document).ready(function () {
+        $('.open-delete-modal').on('click', function () {
+          const entradaId = $(this).data('id');
+          $('#confirm-DeleteBtn').attr('href', `/diario/delete-entry/${entradaId}`);
+        });
+      });
+    </script>
+
+  </body>
+
+  </html>

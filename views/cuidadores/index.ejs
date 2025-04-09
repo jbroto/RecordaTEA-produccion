@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecordaTEA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <link rel="stylesheet" href="/stylesheets/indexStyle.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/cuidadores.css">
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!--LIBRERIA PARA RECORTAR IMÁGENES-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navegacion align-items-center text-center">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavCuidadores">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNavCuidadores">
+                <ul class="navbar-nav align-items-center justify-content-center">
+                    <img src="/images/config/logotipo-grande-blanco.png" alt="Logotipo de recordaTEA" style="max-height: 4em;">
+                    <a href="#" class="mb-0 p-0">
+                        <h1 class="recordaTEA">RecordaTEA</h1>
+                    </a>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown test">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center item-perfil" href="#"
+                            id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>
+                                <i class="bi bi-person-circle"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                            <li><a class="dropdown-item text-danger" href="/cuidadores/logout"><i
+                                        class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-1 d-flex flex-column flex-grow-1 justify-content-center text-center"
+        id="mostrar-perfiles">
+        <h2 class="text-center mt-4 titulos-1">Perfil de mis usuarios</h2>
+        <div class="text-end justify-content-end">
+            <button class="btn btn-background col-lg-2 col-md-3 col-xs-10" id="mostrar-form"><i
+                    class="bi bi-person-plus" style="margin-right: 0.2em;"></i> Nuevo perfil</button>
+        </div>
+
+        <div class="row mt-5 justify-content-center align-items-center" id="cards-usuarios">
+            <% if (data.usuarios.length> 0) { %>
+                <% data.usuarios.forEach(function(elem){ %>
+                    <div class="col-md-3 col-xs-3 mb-5">
+                        <a href="/diario/<%= elem.id %>">
+                            <div class="card card-usuarios align-content-center justify-content-center text-end">
+                                <div class="card-body">
+                                    <% if(elem.imagen){%>
+                                        <img class="card-img img-fluid" src="<%=elem.imagen%>"
+                                        alt="Imagen de perfil de <%=elem.nombre%>">
+                                   <% } else { %>
+                                    <img class="card-img img-fluid" src="/images/config/perfilDefecto.png"
+                                        alt="Opcion por defecto del perfil" style="opacity: 70%;">
+                                   <%}%>
+                                    <h5 class=" text-center ">
+                                        <%= elem.nombre %>
+                                    </h5>
+                                    <hr class="my-2">
+                                    <button id="btn-compartir" data-id="<%= elem.id %>" data-nombre="<%= elem.nombre %>"
+                                        class="btn btn-background text-end" data-bs-toggle="modal"
+                                        data-bs-target="#compartirPerfil"><i class="fa-solid fa-share"></i></button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <div id="aviso-boton">
+                                <p class="align-items-center titulos-2">Todavía no tienes ningún perfil asignado.</p>
+                            </div>
+                            <% } %>
+
+        </div>
+    </div>
+    <div class="container col-lg-6 col-md-6 col-sm-12 text-start mt-4" style="display: none;" id="container-form">
+
+        <form action="" class="form-control mt-3 p-0 pb-4 shadow-lg rounded back-form needs-validation" novalidate>
+            <div class="progress barra-personalizada m-0 rounded-top" role="progressbar" aria-label="Animated striped"
+                aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped progress-bar-animated barra-color"
+                    id="progreso-crear-usuario" style="width: 0%;"></div>
+            </div>
+            <div class="pe-4 ps-4 mt-3">
+                <h2 class="mb-3 text-center">Crear perfil para una persona con TEA</h2>
+                <p>Los campos con (*) son obligatorios.</p>
+
+                <div id="texto-form">
+                    <div class="mb-3">
+                        <label for="usuario-perfil" class="form-label letra-form">Usuario*:</label>
+                        <div class="input-group">
+                            <span class="input-group-text d-none d-md-block">@</span>
+                            <input type="text" class="form-control" id="usuario-perfil" placeholder="Usuario"
+                                name="usuarioTEA" required>
+                            <div class="invalid-feedback" id="usuario-error-perfil">Campo obligatorio.</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="passw-perfil" class="form-label letra-form">Contraseña*:</label>
+                        <div class="input-group">
+                            <span class="input-group-text d-none d-md-block"><i class="bi bi-key"></i></span>
+                            <input type="password" class="form-control" id="passw-perfil" placeholder="Contraseña"
+                                name="passwTEA" required>
+                            <button class="btn btn-ver" type="button" id="ver-passw-perfil"><i
+                                    class="bi bi-eye"></i></button>
+                            <div class="invalid-feedback" id="passw-error-perfil">Campo obligatorio.</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="passw-confirmacion-perfil" class="form-label letra-form">Confirmar
+                            Contraseña*:</label>
+                        <div class="input-group">
+                            <span class="input-group-text d-none d-md-block"><i class="bi bi-key"></i></span>
+                            <input type="password" class="form-control" id="passw-confirmacion-perfil"
+                                placeholder="Confirmar Contraseña" name="passwConfirmacionTEA" required>
+                            <div id="error-perfil" class="invalid-feedback">La contraseña no coincide</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nombre-perfil" class="form-label letra-form">Nombre*:</label>
+                        <div class="input-group">
+                            <span class="input-group-text d-none d-md-block"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" id="nombre-perfil" placeholder="Nombre"
+                                name="nombreTEA" required>
+                            <div class="invalid-feedback">Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="imagen-form" class="d-flex mt-4 mb-5 flex-column">
+                    <div id="container-vista-previa"
+                        class="container-fluid d-flex flex-column col-md-6 text-start justify-content-start mb-3 mb-md-0 justify-content-sm-center align-items-center align-content-center">
+                        <div class="container-fluid d-flex flex-column m-0 text-center justify-content-center align-items-center"
+                            style="max-width: fit-content;">
+                            <p class="text-center texto-normal" id="texto-vistaprevia">Foto de perfil:</p>
+                            
+                            <div class="container-fluid d-flex justify-content-center vista-previa borde-img p-0 ">
+                                <img id="imagenPerfil" class="img-fluid" src="/images/config/perfilDefecto.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <span class="small">(Si no se selecciona ninguna, se establecerá una imagen por defecto)</span>
+                        <div class="invalid-feedback" id="errores-img">Campo obligatorio.</div>
+                    </div>
+                    <div class="align-content-center justify-content-center text-center mt-4">
+                        <input type="file" id="imgPerfil" class="d-none" accept="image/*">
+                        <span id="nombreImgPerfil" class="ms-2 text-muted me-2">Ninguna imagen
+                            seleccionada.</span>
+                        <label for="imgPerfil" class="btn btn-background"><i class="bi bi-card-image"></i>
+                            Seleccionar imagen </label>
+                    </div>
+                </div>
+
+                <div class="text-end justify-content-end mb-3">
+                    <button class="btn btn-borde text-end" id="volver-inicio">Volver</button>
+                    <button class="btn btn-background text-end" type="submit" id="add-perfil">Añadir</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="avisosPictos">
+    </div>
+
+    <div class="container finale mt-5">
+    </div>
+
+    <div class="modal fade" id="compartirPerfil" tabindex="-1" aria-labelledby="compartirPerfilLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <h5 class="modal-title titulos-2 mb-2" id="compartirPerfilLabel">Compartir perfil</h5>
+                        <p class="texto-normal"><i class="bi bi-exclamation-circle me-2"></i>Al compartir un perfil con
+                            otro usuario, este, podrá consultar su diario y
+                            modificar el vocabulario y las rutinas.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="compartirConUsuario" class="form-label letra-form">Usuario*:</label>
+                        <div class="input-group">
+                            <span class="input-group-text d-none d-md-block">@</span>
+                            <input type="text" class="form-control" id="compartirConUsuario" placeholder="Usuario"
+                                name="compartirUsuario" required>
+                            <div class="invalid-feedback" id="compartirConUsuario-error">Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-borde" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-background" id="btnCompartir">Compartir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="recorta-img" tabindex="-1" aria-labelledby="cropModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <h5 class="modal-title titulos-2" id="cropModalLabel">Ajustar la imagen de perfil.</h5>
+                        <p class="texto-normal">El tamaño de las imágenes tiene que ser de 500 x 500 píxeles.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="container d-flex text-center justify-content-center align-items-center">
+                        <div id="contenedorImagen">
+                            <img id="imagenRecortable" style="max-height: 20em;">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-borde" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="recortar-img" class="btn btn-background">Recortar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascripts/crearPerfil.js"></script>
+    <script src="/javascripts/compartirPerfil.js"></script>
+</body>
+
+</html>

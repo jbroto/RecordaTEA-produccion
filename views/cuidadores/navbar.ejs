@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navegacion align-items-center">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavCuidadores">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNavCuidadores">
+                <ul class="navbar-nav align-items-center justify-content-center">
+                    <img src="/images/config/logotipo-grande-blanco.png" alt="Logotipo de recordaTEA" style="max-height: 4em;">
+                    <a href="/cuidadores/inicio" class="mb-0 p-0">
+                        <h1 class="recordaTEA">RecordaTEA</h1>
+                    </a>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown test">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center item-perfil" href="#"
+                            id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>
+                              <i class="bi bi-person-circle"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                            <li><a class="dropdown-item text-danger" href="/cuidadores/logout"><i
+                                        class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg distribuidor align-items-center">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavCuidadores">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/diario/<%=idUsuario%>">Diario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tarjetas-comunicacion">Vocabulario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rutinas">Rutinas</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <%= nombreUsuario %>
+                    </span>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <% if (usuarios.length > 0) { %>
+                            <% usuarios.forEach(function(usuario) { %>
+                                <li><a class="dropdown-item text-azul" href="/diario/<%= usuario.id %>"><%= usuario.nombre %></a></li>
+                            <% }) %>
+                        <% } else { %>
+                            <li><span class="dropdown-item">No tienes más usuarios</span></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+html,
+body {
+    background-color: #F8F6F4;
+    height: 100%;
+}
+
+.card {
+    background-color: #F8F6F4;
+    border-color: black;
+    border-width: 0.2em;
+    border-radius: 0.3em;
+    cursor: pointer;
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;    
+    user-select: none;         
+}
+
+.card:hover {
+    background-color: #c9c8c7;
+}
+
+.scroll-column {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#scrollView {
+    --bs-gutter-x: 0 !important;
+}
+
+.fijar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1em 0;
+}
+
+.diario {
+    padding: 1em;
+}
+
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Estándar */
+}
+
+.cross-icon {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-10%, -30%);
+    cursor: pointer;
+    font-size: 3em;
+}
+.navegacion-icono {
+    width: 6em;
+    height: 6em;
+    object-fit: contain;
+}
+
+.navegacion {
+    background-color: #a7a6a6;
+}
+
+.titulo-hora {
+    font-size: 1.5em;
+}
+
+
+.tamaño-lista {
+    width: 7em;
+    object-fit: cover;
+}
+
+.tamaño-texto{
+    width: 7em !important;
+}
+
+.tamaño-lista-notexto{
+    width: 7em;
+    object-fit: cover;
+    height: 7em;
+}
+
+.tableros {
+    background-color: #dedddb;
+    min-height: 10.736em;
+}
+
+.tableros .card:hover {
+    background-color: #B82132;
+
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Estándar */
+}
+
+a {
+    text-decoration: none;
+}
+
+#contenedorRegistros .card:hover {
+    background-color: #B82132;
+
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Estándar */
+
+}
+
+#contenedorRegistrosEdit .card:hover {
+    background-color: #B82132;
+
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Estándar */
+
+}
+
+.contenedorPictogramas{
+
+    min-height: 10.736em;
+}
+
+.color-voc{
+    background-color: #a7a6a685;
+}
+
+.texto-TEA{
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.texto-boton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+.boton-add-entry{
+    max-width: 8em; 
+}
+
+.no-border{
+    border-width: 0em;
+}
+
+.no-border:hover{
+    background-color:#ffffff00;
+}
+
+.btn-nav{
+  min-width: 5em;
+  min-height: 5em;
+}
+
+.no-editable{
+    pointer-events: none;
+}
+
+.parrafo{
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}

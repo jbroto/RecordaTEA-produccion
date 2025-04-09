@@ -1,0 +1,48 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.cont-manage {
+    border-color: black;
+    border-width: 0.2em;
+    border-radius: 0.3em;
+}
+
+
+
+.manage-btn-group .btn {
+    border-radius: 0 !important;
+    
+}
+
+.finale{
+    height: 2em;
+}
+#pantallaprincipal{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 90vh;
+        flex-direction: column;
+    
+}
+
+.texto-centro{
+    height: 50vh;
+}
+
+.seleccionada{
+    background-color:#619661 !important;
+    border-color: #406840 !important;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.texto-perfil{
+    font-size: 2em;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario de<%= data.usuario.nombre %></title>
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/cuidadores.css">
+    <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <%-include ("navbar",  { nombreUsuario: data.usuario.nombre, idUsuario: data.usuario.id, usuarios: data.usuarios })%>
+        <main class="container margen">
+            <div class="row mt-4 text-center">
+                <h1 class="titulos-1">Diario de <%= data.usuario.nombre %></h1>
+            </div>
+            <div class="row d-flex align-items-center justify-content-end text-end">
+                <form action="" class="row w-100 d-flex align-items-center justify-content-end">
+                    <div class=" col-lg-2 d-flex align-items-center justify-content-center mt-3">
+                        <label for="mes" class="form-label me-2 d-none">Mes:</label>
+                        <select id="mes" name="mes" class="form-select select-mes">
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="d-flex col-lg-2 align-items-center justify-content-center mt-3">
+                        <label for="anyo" class="form-label me-2 d-none">Año:</label>
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="anyo" class="form-control" data-anyos="<%= JSON.stringify(data.anyos) %>"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row list-group mt-5" id="consultaDiario">
+                <% if (data.entradas.length> 0) { %>
+                    <% data.entradas.forEach(function(elem){%>
+                        <a href="/diario/dia/<%= elem.fecha%>" id="consultaDia2" class="mt-3">
+                            <div class="d-flex align-items-center tarjeta-diario shadow-lg <%= elem.hoy ? 'hoy' : '' %>">
+                                <div class="list-group-item list-dia flex-column align-items-center entrada">
+                                    <div class="justify-content-center text-center">
+                                        <h2><%= elem.dia %></h2>
+                                        <h3><%= elem.mes %></h3>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-contenido flex-column align-items-start entrada" >
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1 texto-diario fw-bold"><%= elem.f %> (<%= elem.entradas %> <%= elem.entradas === 1 ? 'registro' : 'registros' %>)</h5>
+                                        <small>
+                                            <% 
+                                                const hoy = new Date(); 
+                                                const fechaEntrada = new Date(elem.fecha); 
+                                                
+                                                const milis = hoy - fechaEntrada;
+                                                const diasPasados = Math.floor(milis / (1000 * 60 * 60 * 24)); 
+                                        
+                                                let diaTexto;
+                                                if (diasPasados === 0) {
+                                                    diaTexto = "Hoy";
+                                                } else if (diasPasados === 1) {
+                                                    diaTexto = "Hace 1 día";
+                                                } else {
+                                                    diaTexto = `Hace ${diasPasados} días`;
+                                                }
+                                            %>
+                                            <%= diaTexto %>
+                                        </small>
+                                    </div>
+                                    <p class="mb-1 texto-diario fw-bold">Último registro:</p>
+                                    <div class="img-registro gap-3">
+                                        <% if (elem.cuerpo === null){%>
+                                            <% elem.pictos.forEach(function(p){%>
+                                                <img class="me-2" src="<%=p.enlace%>" alt="">
+                                               <%}) %>
+                                        <%} else {%>
+                                            <div class="d-flex">
+                                                <p class="align-items-center texto-entrada"><%= elem.cuerpo%></p>
+                                            </div>
+                                            <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <%})%>
+                    <% } else { %>
+                        <div class="col-12 text-center">
+                            <p class="texto-diario">El diario de <%= data.usuario.nombre %> no tiene entradas este mes.</p>
+                        </div>
+                        <%}%>
+            </div>
+
+        </main>
+    </div>
+    <script src="/javascripts/diary.js"></script>
+</body>
+
+</html>

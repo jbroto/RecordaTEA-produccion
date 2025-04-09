@@ -1,0 +1,63 @@
+<head>
+    <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <%- include("navbarTEA") %>
+    <div class="container mt-5">
+        <h1 class="container">
+            <%= entrada.fecha_registro %> a las <%= entrada.hora_registro %>
+        </h1>
+
+        <div class="row mt-5">
+            <% if (entrada.tipo === "Picto") { %>
+                <% entrada.tarjetas.forEach(function(picto) { %>
+                    <div class="col-lg-2 col-md-3 col-sm-5 col-xs-6">
+                        <div class="card mb-2">
+                            <img class="card-img" src="<%= picto.enlace || picto.imagen %>">
+                            <% if(config.picto_texto)  { %>
+                                <h5 class="nombre-pictograma text-center"> <%= picto.texto %></h5>
+                                <% }%>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="me-2">
+                    <p class="parrafo">
+                        <%= entrada.cuerpo %>
+                    </p>
+                </div>
+            <% } %>
+
+            <% if (entrada.emocion != null) { %>
+                <div class="col-lg-2 col-md-3 col-sm-5 col-xs-6 ms-auto text-center">
+                    <div class="card">
+                        <img class="card-img" src="<%= entrada.emocion %>">
+                    </div>
+                    <p class="card-title texto-boton">EMOCIÓN</p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5">
+        <div class="row d-flex text-center justify-content-center">
+            <div class="col-lg-1 col-md-3 col-sm-5 col-xs-6">
+                <div class="card no-border text-center">
+                    <a href="/diario">
+                        <img class="card-img" src="/images/config/botonVolver.png" alt="Volver a la pestaña anterior">
+                    </a>
+                    <p class="card-title texto-boton text-center">VOLVER</p>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-3 col-sm-5 col-xs-6">
+                <div class="card no-border text-center" id="botonEditarEntrada">
+                    <a href="/diario/edit-entry/<%= entrada.idEntrada %>">
+                        <img class="card-img" src="/images/config/botonEditar.png" alt="Editar entrada del diario">
+                        <p class="card-title texto-boton text-center">EDITAR</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,539 @@
+html,
+body {
+    background-color: #F9F7F7;
+}
+
+/*BARRA DE NAVEGACIÓN*/
+.navegacion {
+    background-color: #213555;
+}
+
+.distribuidor {
+    background-color: #213555eb;
+}
+
+.dropdown-item:focus, 
+.dropdown-item:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.distribuidor a,
+.distribuidor span {
+    color: #F9F7F7;
+    padding: 0.5em;
+    margin-right: 0.5em;
+    transition: transform 0.3s ease;
+}
+
+.distribuidor a:hover{
+    transform: translateY(-0.15em);
+}
+
+.text-azul {
+    color: #213555 !important;
+}
+
+.distribuidor a:hover {
+    color: #F9F7F7;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.item-navbar {
+    color: #F9F7F7;
+    padding: 0;
+    margin-right: 2em;
+    font-size: 1em;
+}
+
+.item-perfil {
+    color: #F9F7F7;
+    padding: 0;
+    font-size: 2em;
+}
+
+.item-perfil:hover {
+    color: #F9F7F7;
+}
+
+.navbar .dropdown-toggle:focus,
+.navbar .dropdown-toggle:active {
+    color: #F9F7F7 !important;
+}
+
+.recordaTEA {
+    margin-top: 0.3em;
+    margin-left: 0.2em;
+    font-family: 'Courier New', Courier, monospace;
+    color: #F9F7F7;
+    font-size: 2em;
+    transition: transform 0.3s;
+}
+
+.recordaTEA:hover {
+    transform: scale(1.03);
+}
+
+#avisosPictos {
+    position: fixed;
+    bottom: 2em;
+    left: 2em;
+    z-index: 1000;
+}
+
+
+/*TIPOGRAFÍA Y ESTILOS DE TEXTO*/
+.titulos-1 {
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.3em;
+}
+
+.titulos-2 {
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+
+.texto-normal {
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.texto-entrada{
+    color: #2A3335;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    text-align: justify;
+}
+
+/*CARDS DE LOS USUARIOS*/
+.card-usuarios {
+    background-color: #F9F7F7;
+    border-width: 0.2em;
+    border-radius: 0.3em;
+    transition: transform 0.3s;
+    min-height: 3em;
+}
+
+.card-usuarios:hover {
+    transform: scale(1.03);
+    background-color: none;
+}
+
+.card-usuarios .card-title {
+    color: #2A3335;
+}
+
+.texto-creditos {
+    color: #213555;
+    font-size: xx-small;
+}
+
+
+/*DIARIO*/
+.hoy {
+    border-color: #213555 !important;
+    border-width: 0.3em !important;
+}
+
+.entrada {
+    border-radius: 15px;
+    background-color: white;
+}
+
+.entrada:hover {
+    background-color: rgb(223, 223, 223);
+}
+
+.tarjeta-diario button {
+    border-color: #213555;
+    border-width: 0.1em;
+    color: #213555;
+}
+
+.tarjeta-diario button:hover {
+    background-color: #213555;
+    color: #F9F7F7;
+}
+
+.list-contenido {
+    width: 100%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.list-dia {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.list-dia h2 {
+    font-weight: bolder;
+    color: #213555;
+    font-size: 4.7em;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+}
+
+.list-dia h3 {
+    font-weight: bolder;
+    color: #213555;
+    font-size: 2.7em;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.list-hora {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.list-hora h2 {
+    font-weight: bolder;
+    color: #213555;
+    font-size: 3em;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+}
+
+.list-hora p {
+    color: #213555;
+    font-size: 2em;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tarjeta-diario {
+    padding: 1em;
+    gap: 1em;
+    margin-bottom: 2em;
+    border: 1px rgba(0, 0, 0, 0.275) solid;
+    border-radius: 15px;
+}
+
+.img-registro img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.texto-diario {
+    color: #213555;
+}
+
+.no-margen {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*GESTIÓN DE TARJETAS*/
+.borde {
+    border-color: #213555;
+    border-width: 0.1em;
+    border-style: solid;
+    border-radius: 0.2em;
+}
+
+.manage-btn-group {
+    border-radius: 10px 10px 0 0 !important;
+    overflow: hidden;
+    border: 0.1em solid #213555;
+    border-bottom: 0 !important;
+}
+
+.manage-btn-group button {
+    color: #213555;
+}
+
+.seleccion {
+    background-color: #213555;
+    color: #F9F7F7 !important;
+}
+
+.manage-btn-group button:hover {
+    background-color: #213555;
+    color: #F9F7F7;
+}
+
+.manage-buttons {
+    border-right: 0.1em solid #213555;
+}
+
+.cargando {
+    color: #213555;
+    width: 4em;
+    height: 4em;
+}
+
+.add-picto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #6196619e;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover .add-picto,
+.card:hover .mas {
+    opacity: 1;
+}
+
+.modal-body .card:hover {
+    background-color: #c0c1c3;
+    /* Cambia al color que prefieras */
+    cursor: pointer;
+    /* Añade un indicador visual */
+    transition: background-color 0.3s ease;
+    /* Animación suave */
+}
+
+.gestion {
+    position: relative !important;
+}
+
+.mas {
+    position: absolute;
+    top: -0.5em;
+    left: 0em;
+    color: #aaeaaa;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: transform 0.3s;
+    padding: 0;
+    margin: 0;
+}
+
+.mas:hover,
+.trash:hover {
+    transform: scale(1.15);
+}
+
+.remove-picto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #b821339e;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.trash {
+    position: absolute;
+    bottom: 0em;
+    right: 0.2em;
+    color: #6f0c18;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: transform 0.3s;
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card:hover .remove-picto,
+.card:hover .trash {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.borde-cont {
+    border: 0.1em solid #213555;
+    border-radius: 0.1em;
+}
+
+.vocabulario {
+    background-color: #213555a5;
+    min-height: 10.736em;
+}
+
+.barra-personalizada {
+    border-radius: 0em;
+    background-color: #c0c1c3;
+    height: 0.7em;
+}
+
+.barra-color {
+    background-color: #214055;
+}
+
+#no-pictos span, #no-imagenes span {
+    color: #F9F7F7;
+}
+
+.alert-custom {
+    padding: 0.5em;
+    background-color: #213555;
+    color: #F9F7F7;
+    border-color: #213555;
+    border-radius: 0.2em;
+}
+
+.btn-deshacer {
+    color: #F9F7F7;
+    margin-left: 0.3em;
+    font-weight: bolder;
+    border-radius: 0.2em;
+    border-color: #213555;
+    background: linear-gradient(to right, #d0d5decc 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.btn-deshacer:hover {
+    background-position: left bottom;
+}
+
+/*GENERALES*/
+.btn-background {
+    background-color: #213555;
+    border-color: #213555;
+    border-width: 0.1em;
+    color: #F9F7F7;
+}
+
+.btn-background:hover {
+    border-color: #213555;
+    border-width: 0.1em;
+    color: #213555;
+    background-color: #F9F7F7;
+}
+
+.btn-borde {
+    border-color: #213555;
+    border-width: 0.1em;
+    color: #213555;
+    background-color: #F9F7F7;
+}
+
+.btn-borde:hover {
+    background-color: #213555;
+    color: #F9F7F7;
+    border-color: #213555;
+}
+
+.btn-borde:disabled {
+    cursor: not-allowed;
+    border-color: #213555a3;
+    border-width: 0.1em;
+    color: #213555a3;
+    background-color: #F9F7F7a3;
+}
+
+.btn-borde:active {
+    box-shadow: none;
+}
+
+.btn-eliminar {
+    background-color: #B82132;
+    color: #F9F7F7;
+}
+
+.aviso {
+    color: black;
+}
+
+/* RECORTAR IMÁGENES*/
+.vista-previa {
+    width: 15em;
+    min-height: 15em;
+}
+
+.borde-img {
+    border-width: 0.2em;
+    border-radius: 0.1em;
+    border-color: #213555;
+    border-style: solid;
+}
+
+.minimo-texto-libre {
+    min-height: 20em;
+}
+
+.form-check-input {
+    border-color: #213555;
+    background-color: #F9F7F7;
+}
+
+.form-check-input:checked {
+    background-color: #213555;
+    border-color: #F9F7F7;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 5px #213555;
+    border-color: #213555;
+}
+.datepicker-wrapper {
+    position: relative;
+}
+
+.datepicker-wrapper input {
+    padding-right: 30px; /* Para dejar espacio para la flecha */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-position: right 10px center; /* Aseguramos que la flecha esté a la derecha */
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    color: #213555;
+}
+
+.back-form{
+    background-color: #F9F7F7;
+}
+
+.form-control {
+    background-color: #F9F7F7;
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: #c9c8c7;
+}
+
+.form-select {
+    background-color: #F9F7F7;
+    color: #213555;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: #c9c8c7;
+}
+
+.form-control:focus {
+    background-color: #ffffff;
+    border-color: #213555;
+    box-shadow: 0 0 2px #213555;
+}
+
+.form-select:focus {
+    background-color: #ffffff;
+    border-color: #213555;
+    box-shadow: 0 0 2px #213555;
+}
+
+.input-group-text {
+    background-color: #34425a00;
+    color: #213555;
+    border-color: #c9c8c7;
+}

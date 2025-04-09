@@ -1,0 +1,90 @@
+<head>
+    <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <%- include("navbarTEA") %>
+        <div class="container">
+            <h3 class="text-center mt-5">
+                <%= nombreRutina.toUpperCase() %>
+            </h3>
+            <div class="container contenedorPictogramas mt-5" style="border: 2px solid black; border-radius: 3px;"
+                id="contenedorRutina">
+                <div class="row pb-3" id="cardsRutina">
+                    <!--porque se le pasa minimo una entrada pero para obtener el nombre de la rutina aunque no tenga pictos-->
+                    <% if (rutinas.length>0) { %>
+                        <% rutinas.forEach(function(item) { %>
+                            <div class="col-lg-2 col-md-3 mt-3 d-flex">
+
+                                <div class="card">
+                                    <img src=" <%= item.enlace %>" class="card-img">
+                                    <% if(config.picto_texto) { %>
+                                        <h5 class="nombre-pictograma text-center">
+                                            <%= item.texto %>
+                                        </h5>
+                                        <%}%>
+                                </div>
+
+                            </div>
+                            <% }); %>
+
+                                <% } else { %>
+                                    <p>No existen tarjetas para dicha rutina</p>
+                                    <% } %>
+
+
+
+
+                </div>
+
+            </div>
+            <div class="container mt-5 pb-5" id="buttonsRutina">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-2 col-md-3 col-sm-4 text-center" id="botonVolverRutinas">
+                        <img class="img-fluid" src="/images/config/botonVolver.png" alt="Volver a las rutinas"
+                            style="cursor:pointer">
+                            <p class="card-title texto-boton">VOLVER</p>
+                    </div>
+
+                    <% if (rutinas.length>0) { %>
+                        <div class="col-lg-2 col-md-3 col-sm-4 text-center" id="botonIniciarRutina">
+                            <img class="img-fluid" src="/images/config/ir.png" alt="Ir" style="cursor:pointer">
+                            <p class="card-title texto-boton">INICIAR</p>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+
+            <div class="" id="containerInicioRutina">
+                <div class="container d-flex mt-3 align-items-center justify-content-center" id="containerAccionActual">
+
+                    <div class="col-lg-12 col-md-12 mt-12 d-flex flex-column align-items-center justify-content-center p-2"
+                        style="border: 2px solid black; border-radius: 3px; width: fit-content;">
+                        <button class="btn" id="buttonIniciar">
+                            <img src="/images/config/iniciar.png" alt="" class="card-img" style="max-width: 14em;">
+                        </button>
+                        <h5 id="texto-tarjeta" class="mb-3">SIGUIENTE PASO</h5>
+                        <p id="terminado"></p>
+                    </div>
+
+
+                </div>
+                <div class="container mt-3 contenedorPictogramas" style="border: 2px solid black; border-radius: 3px;"
+                    id="contenedorRutinaHecha">
+
+                    <div class="row pb-3">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container finale"></div>
+
+        <script src="https://unpkg.com/sortablejs-make/Sortable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+        <script src="/javascripts/sortableCards.js"></script>
+        <script src="/javascripts/rutinasTEA.js"></script>
+        <script src="/javascripts/iniciarRutina.js"></script>
+</body>
