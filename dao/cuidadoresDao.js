@@ -38,7 +38,7 @@ class CuidadoresDao{
 
     async compartirPerfil(idUsuario, idPerfil){
         try{
-            let [resultado] = await pool.query('INSERT INTO Cuidadores_usu (id_cuidador, id_usuario) VALUES (?,?)', [idUsuario, idPerfil]);
+            let [resultado] = await pool.query('INSERT INTO Cuidadores_Usu (id_cuidador, id_usuario) VALUES (?,?)', [idUsuario, idPerfil]);
             return resultado.affectedRows;
         }
         catch(error){
@@ -49,7 +49,7 @@ class CuidadoresDao{
 
     async perfilVinculadoId(idUsuario, idPerfil){
         try{
-            let [resultado] = await pool.query('SELECT * FROM Cuidadores_usu WHERE id_cuidador = ? AND id_usuario = ?', [idUsuario, idPerfil]);
+            let [resultado] = await pool.query('SELECT * FROM Cuidadores_Usu WHERE id_cuidador = ? AND id_usuario = ?', [idUsuario, idPerfil]);
             return resultado;
         }
         catch(error){

@@ -54,7 +54,7 @@ class UsuariosDao {
 
     async realcionCuidador(usuarioId, cuidadorId){
         try{
-            const [resultado] = await pool.query('INSERT INTO Cuidadores_usu (Id_cuidador, Id_usuario)  VALUES (?, ?)', [cuidadorId, usuarioId]);
+            const [resultado] = await pool.query('INSERT INTO Cuidadores_Usu (Id_cuidador, Id_usuario)  VALUES (?, ?)', [cuidadorId, usuarioId]);
             return resultado;
         }
         catch(error){
