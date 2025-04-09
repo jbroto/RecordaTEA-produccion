@@ -37,7 +37,7 @@ $(document).ready(function () {
         }
         // Verifica si el contenedorRutina está vacío
         if ($('#contenedorRutina .col-lg-2').length === 0) {
-            $('#buttonIniciar .card-img').attr('src', "/images/config/botonvolver.png");
+            $('#buttonIniciar .card-img').attr('src', "/images/config/botonVolver.png");
           $('#terminado').text("Enhorabuena, has terminado la rutina");
         }
     });
