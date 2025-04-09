@@ -95,7 +95,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
             // 3. Insertar en 'entradas_tarjeta'
             if (tarjetasValues.length > 0) {
                 await conn.query(
-                    `INSERT INTO entradas_tarjeta (id_entrada, id_tarjeta, orden) VALUES ?;`,
+                    `INSERT INTO Entradas_tarjeta (id_entrada, id_tarjeta, orden) VALUES ?;`,
                     [tarjetasValues]
                 );
             }
@@ -119,7 +119,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
 
             // 1. Eliminar 'entradas' de entradas_Tarjeta
             const [entradaResult] = await conn.execute(
-                `DELETE FROM entradas_tarjeta WHERE id_entrada = ?;`,
+                `DELETE FROM Entradas_tarjeta WHERE id_entrada = ?;`,
                 [id]
             );
 
@@ -131,7 +131,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
             // 3. Eliminar en 'entradas'
 
             const [entrada] = await conn.query(
-                `DELETE FROM entradas WHERE id = ? AND id_usuario = ?;`,
+                `DELETE FROM Entradas WHERE id = ? AND id_usuario = ?;`,
                 [id, idUsuario]
             );
 
@@ -161,14 +161,14 @@ ORDER BY DATE(e.fecha_registro) DESC;
 
             // 1. Actualizar la entrada
             await conn.execute(
-                'UPDATE entradas SET fecha_registro = ? WHERE id = ?',
+                'UPDATE Entradas SET fecha_registro = ? WHERE id = ?',
                 [data.fecha_registro, data.id]
             );
 
 
             // 2. Obtener tarjetas actuales de la base de datos
             const [rows] = await conn.execute(
-                'SELECT id_tarjeta, orden FROM entradas_tarjeta WHERE id_entrada = ?',
+                'SELECT id_tarjeta, orden FROM Entradas_tarjeta WHERE id_entrada = ?',
                 [data.id]
             );
 
@@ -180,7 +180,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
             for (const [id_tarjeta_actual] of actuales) {
                 if (!nuevas.has(id_tarjeta_actual)) {
                     await conn.execute(
-                        'DELETE FROM entradas_tarjeta WHERE id_entrada = ? AND id_tarjeta = ?',
+                        'DELETE FROM Entradas_tarjeta WHERE id_entrada = ? AND id_tarjeta = ?',
                         [data.id, id_tarjeta_actual]
                     );
                 }
@@ -192,13 +192,13 @@ ORDER BY DATE(e.fecha_registro) DESC;
                     // No existía antes: insertar
 
                     const [existingEntry] = await conn.execute(
-                        'SELECT 1 FROM entradas_tarjeta WHERE id_entrada = ? AND id_tarjeta = ?',
+                        'SELECT 1 FROM Entradas_tarjeta WHERE id_entrada = ? AND id_tarjeta = ?',
                         [data.id, id]
                     );
 
                     if (existingEntry.length === 0) {
                         await conn.execute(
-                            'INSERT INTO entradas_tarjeta (id_entrada, id_tarjeta, orden) VALUES (?, ?, ?)',
+                            'INSERT INTO Entradas_tarjeta (id_entrada, id_tarjeta, orden) VALUES (?, ?, ?)',
                             [data.id, id, orden]
                         );
                     }
@@ -210,7 +210,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
                     if (actual.orden !== orden) {
                         // Existía pero con distinto orden: actualizar
                         await conn.execute(
-                            'UPDATE entradas_tarjeta SET orden = ? WHERE id_entrada = ? AND id_tarjeta = ?',
+                            'UPDATE Entradas_tarjeta SET orden = ? WHERE id_entrada = ? AND id_tarjeta = ?',
                             [orden, data.id, id]
                         );
                     }
@@ -220,7 +220,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
 
             // 5. Actualizar la emocion
             await conn.execute(
-                'UPDATE entradas SET emocion = ? WHERE id = ?',
+                'UPDATE Entradas SET emocion = ? WHERE id = ?',
                 [data.emocion, data.id]
             );
 
@@ -244,21 +244,21 @@ ORDER BY DATE(e.fecha_registro) DESC;
 
             // Obtener entrada actuale de la base de datos
             const [rows] = await conn.execute(
-                'SELECT cuerpo FROM entradas WHERE id = ?',
+                'SELECT cuerpo FROM Entradas WHERE id = ?',
                 [data.id]
             );
 
             // Actualizarlas si hay cambios
             if (rows[0].cuerpo != data.cuerpo) {
                 await conn.execute(
-                    'UPDATE entradas SET cuerpo = ? WHERE id = ?',
+                    'UPDATE Entradas SET cuerpo = ? WHERE id = ?',
                     [data.cuerpo, data.id]
                 );
             }
 
             if (rows[0].fecha_registro != data.fecha_registro) {
                 await conn.execute(
-                    'UPDATE entradas SET fecha_registro = ? WHERE id = ?',
+                    'UPDATE Entradas SET fecha_registro = ? WHERE id = ?',
                     [data.fecha_registro, data.id]
                 );
             }
@@ -302,7 +302,7 @@ ORDER BY DATE(e.fecha_registro) DESC;
 
     async obtenerAnyos(idUsuario) {
         try {
-            let [response] = await pool.query('SELECT DISTINCT YEAR(fecha_registro) AS anyo FROM entradas WHERE id_usuario = ? ORDER BY anyo DESC;', [idUsuario])
+            let [response] = await pool.query('SELECT DISTINCT YEAR(fecha_registro) AS anyo FROM Entradas WHERE id_usuario = ? ORDER BY anyo DESC;', [idUsuario])
             return response;
         }
         catch (error) {
