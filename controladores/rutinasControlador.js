@@ -107,7 +107,7 @@ class RutinasControlador {
 
 
             const response = await rutinasServicio.crearRutina(rutina);
-
+            console.info(response);
             if (response.success) {
                 res.redirect("/rutinas");
             }
@@ -117,7 +117,7 @@ class RutinasControlador {
         }
         catch (error) {
             const rr = new Error('Ha ocurrido algo en el servidor, lamentamos las molestias.');
-            console.log(error);
+            console.error(error);
             rr.status = 500;
             next(rr);
         }
