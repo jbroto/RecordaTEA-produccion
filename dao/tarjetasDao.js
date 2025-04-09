@@ -10,6 +10,7 @@ class TarjetasDao {
       return vocabulario;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al obtener pictos por usuario: ', error);
       throw error;
     }
   }
@@ -25,6 +26,7 @@ class TarjetasDao {
       return vocabulario;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al obtener tarjetas por usuario: ', error);
       throw error;
     }
   }
@@ -36,6 +38,7 @@ class TarjetasDao {
       return response.insertId;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al añadir tarjetas al vocabulario: ', error);
       throw error;
     }
   }
@@ -47,6 +50,7 @@ class TarjetasDao {
       return response;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al comprobar existencia de tarjetas en vocabulario: ', error);
       throw error;
     }
   }
@@ -57,6 +61,7 @@ class TarjetasDao {
       return response.affectedRows;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al eliminar tarjetas al vocabulario: ', error);
       throw error;
     }
   }
@@ -67,6 +72,7 @@ class TarjetasDao {
       return picto;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al buscar tarjetas en el vocabulario: ', error);
       throw error;
     }
   }
@@ -91,6 +97,7 @@ class TarjetasDao {
       return pictos;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al buscar tarjetas al en una entrada: ', error);
       throw error;
     }
   }
@@ -102,6 +109,7 @@ class TarjetasDao {
       return resultadoImagen.insertId;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al añadir imagenes al vocabulario: ', error);
       throw error;
     }
   }
@@ -112,6 +120,7 @@ class TarjetasDao {
       return imagenes;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al leer imagenes del vocabulario: ', error);
       throw error;
     }
   }
@@ -122,6 +131,7 @@ class TarjetasDao {
       return resultado.affectedRows;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al activar una tarjeta del vocabulario: ', error);
       throw error;
     }
   }
@@ -132,6 +142,7 @@ class TarjetasDao {
       return resultado.affectedRows;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al activar el texto libre: ', error);
       throw error;
     }
   }
@@ -142,6 +153,7 @@ class TarjetasDao {
       return resultado.affectedRows;
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al activar el texto del picto: ', error);
       throw error;
     }
   }
@@ -152,6 +164,7 @@ class TarjetasDao {
       return resultado[0];
     }
     catch (error) {
+      console.error('[ERROR] TarjetasDao: al leer la configuración del vocabulario: ', error);
       throw error;
     }
   }

@@ -20,13 +20,18 @@ class UsuariosDao {
             return usuarios[0];
         }
         catch (error) {
-            console.error('ERROR[UsuariosDao]: buscar usuarios por Id del cuidador');
+            console.error('ERROR[UsuariosDao]: buscar usuarios por Id del cuidador', error);
         }
     }
 
     async login(usuario) {
-        const [u] = await pool.query('SELECT * FROM Usuarios WHERE usuario = ?', [usuario.usuario]);
-        return u[0];
+        try{
+            const [u] = await pool.query('SELECT * FROM Usuarios WHERE usuario = ?', [usuario.usuario]);
+            return u[0];
+        }
+        catch(error){
+            console.error('ERROR[UsuariosDao]: al hacer login: ', error);
+        }
     }
 
     async leerUsuario(usuario) {
@@ -69,7 +74,8 @@ class UsuariosDao {
             return resultado.insertId;
         }
         catch(error){
-
+            console.error('Error al añadir una imagen de perfil: ', error);
+            throw error;
         }
     }
 };

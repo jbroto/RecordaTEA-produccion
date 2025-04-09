@@ -25,6 +25,7 @@ class RutinassDao {
             return response;
         }
         catch (error) {
+            console.error('[ERROR] RutinasDao: al buscar rutinas por id usuario: ', error);
           throw error;
         }
     }
@@ -46,6 +47,7 @@ class RutinassDao {
 
 
         catch (error) {
+            console.error('[ERROR] RutinasDao: al buscar trajetas de una rutina: ', error);
             throw error;
         }
     }
@@ -76,6 +78,7 @@ class RutinassDao {
 
         } catch (e) {
             await connection.rollback();
+            console.error('[ERROR] RutinasDao: al crear una rutina: ', error);
             throw e;
         }
         finally {

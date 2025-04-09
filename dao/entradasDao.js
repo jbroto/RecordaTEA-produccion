@@ -6,31 +6,34 @@ class EntradasDao {
     async entradasMes(usuario, mes, año) {
         try {
             let [entradas] = await pool.query(`
-               SELECT e.tipo, DATE(e.fecha_registro) AS fecha, 
-           COUNT(*) AS entradas,
-           e2.id AS id,
-           e2.cuerpo AS cuerpo
-    FROM Entradas e
-    JOIN Entradas e2 
-        ON DATE(e2.fecha_registro) = DATE(e.fecha_registro)
-        AND e2.id_usuario = e.id_usuario
-        AND e2.fecha_registro = (
-            SELECT MAX(fecha_registro)
-            FROM Entradas 
-            WHERE DATE(fecha_registro) = DATE(e.fecha_registro)
-            AND id_usuario = e.id_usuario
-        )
-    WHERE e.id_usuario = ? 
-    AND MONTH(e.fecha_registro) = ?  
-    AND YEAR(e.fecha_registro) = ?   
-    GROUP BY DATE(e.fecha_registro)
-    GROUP BY DATE(e.fecha_registro), e.tipo, e2.id, e2.cuerpo DESC;
+SELECT 
+    e.tipo, 
+    DATE(e.fecha_registro) AS fecha, 
+    COUNT(*) AS entradas,
+    e2.id AS id,
+    e2.cuerpo AS cuerpo
+FROM Entradas e
+JOIN Entradas e2 
+    ON DATE(e2.fecha_registro) = DATE(e.fecha_registro)
+    AND e2.id_usuario = e.id_usuario
+    AND e2.fecha_registro = (
+        SELECT MAX(fecha_registro)
+        FROM Entradas 
+        WHERE DATE(fecha_registro) = DATE(e.fecha_registro)
+        AND id_usuario = e.id_usuario
+    )
+WHERE e.id_usuario = ? 
+  AND MONTH(e.fecha_registro) = ?  
+  AND YEAR(e.fecha_registro) = ?   
+GROUP BY DATE(e.fecha_registro), e.tipo, e2.id, e2.cuerpo
+ORDER BY DATE(e.fecha_registro) DESC;
             `, [usuario, mes, año]);
 
 
             return entradas;
         }
         catch (error) {
+            console.error('[ERROR] EntradasDao: al buscar las entradas de un mes: ', error);
             throw error;
         }
     }
@@ -41,6 +44,7 @@ class EntradasDao {
             return entradas;
         }
         catch (error) {
+            console.error('[ERROR] EntradasDao: al buscar las entradas de un día: ', error);
             throw error;
         }
     }
@@ -62,6 +66,7 @@ class EntradasDao {
             return entradas;
         }
         catch (error) {
+            console.error('[ERROR] EntradasDao: al buscar las entradas de un usuario: ', error);
             throw error;
         }
     }
@@ -100,6 +105,7 @@ class EntradasDao {
 
         } catch (error) {
             await conn.rollback();
+            console.error('[ERROR] EntradasDao: al añadir una entrada: ', error);
             return { success: false, error };
         } finally {
             conn.release();
@@ -140,6 +146,7 @@ class EntradasDao {
 
         } catch (error) {
             await conn.rollback();
+            console.error('[ERROR] EntradasDao: al eliminar una entrada: ', error);
             return { success: false, error };
         } finally {
             conn.release();
@@ -223,6 +230,7 @@ class EntradasDao {
 
         } catch (err) {
             await conn.rollback();
+            console.error('[ERROR] EntradasDao: al editar las tarjetas de una entrada: ', error);
             return { success: false, error: err };
         } finally {
             conn.release();
@@ -260,6 +268,7 @@ class EntradasDao {
 
         } catch (err) {
             await conn.rollback();
+            console.error('[ERROR] EntradasDao: al editar el texto de una entrada: ', error);
             return { success: false, error: err };
         } finally {
             conn.release();
@@ -284,6 +293,7 @@ class EntradasDao {
             return entradas;
         }
         catch (error) {
+            console.error('[ERROR] EntradasDao: al obtener una entrada por id: ', error);
             throw error;
         }
 
@@ -296,6 +306,7 @@ class EntradasDao {
             return response;
         }
         catch (error) {
+            console.error('[ERROR] EntradasDao: al obetener los años en los que hay entradas: ', error);
             throw error;
         }
     }
