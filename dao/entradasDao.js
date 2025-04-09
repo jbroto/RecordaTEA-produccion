@@ -24,7 +24,7 @@ class EntradasDao {
     AND MONTH(e.fecha_registro) = ?  
     AND YEAR(e.fecha_registro) = ?   
     GROUP BY DATE(e.fecha_registro)
-    ORDER BY DATE(e.fecha_registro) DESC;
+    GROUP BY DATE(e.fecha_registro), e.tipo, e2.id, e2.cuerpo DESC;
             `, [usuario, mes, año]);
 
 
