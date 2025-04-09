@@ -101,13 +101,13 @@ class RutinasControlador {
     async submitRutina(req, res, next) {
         try {
             const tarjetasRutina = req.body.rutina;
-            const rutina = JSON.parse(tarjetasRutina);
+            let rutina = JSON.parse(tarjetasRutina);
             rutina.autor = req.session.idUsuario;
             rutina.id_usuario = req.session.usuario.id;
 
 
             const response = await rutinasServicio.crearRutina(rutina);
-            console.info(response);
+            console.error(response);
             if (response.success) {
                 res.redirect("/rutinas");
             }
