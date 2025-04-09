@@ -78,7 +78,7 @@ class RutinassDao {
 
         } catch (e) {
             await connection.rollback();
-            console.error('[ERROR] RutinasDao: al crear una rutina: ', error);
+            console.error('[ERROR] RutinasDao: al crear una rutina: ', e);
             throw e;
         }
         finally {
