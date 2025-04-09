@@ -107,7 +107,6 @@ class RutinasControlador {
 
 
             const response = await rutinasServicio.crearRutina(rutina);
-            console.error(response);
             if (response.success) {
                 res.redirect("/rutinas");
             }

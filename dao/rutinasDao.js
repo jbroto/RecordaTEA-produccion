@@ -69,7 +69,7 @@ class RutinassDao {
                 ]);
 
                 await connection.query(
-                    `INSERT INTO rutinas_tarjeta (id_rutina, id_tarjeta, orden) VALUES ?;`,
+                    `INSERT INTO Rutinas_tarjeta (id_rutina, id_tarjeta, orden) VALUES ?;`,
                     [queries]
                 );
                 await connection.commit();
