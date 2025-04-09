@@ -16,7 +16,7 @@ class UsuariosDao {
 
     async leerUsuariosCuidador(idCuidador) {
         try {
-            const usuarios = await pool.query('SELECT Usuarios.nombre, Usuarios.id, i.imagen, i.mimetype FROM Usuarios JOIN Cuidadores_Usu ON Usuarios.id = Cuidadores_Usu.id_usuario LEFT JOIN Imgperfil i ON i.id_usuario = Cuidadores_Usu.id_usuario WHERE Cuidadores_Usu.id_cuidador = ?', [idCuidador]);
+            const usuarios = await pool.query('SELECT Usuarios.nombre, Usuarios.id, i.imagen, i.mimetype FROM Usuarios JOIN Cuidadores_Usu ON Usuarios.id = Cuidadores_Usu.id_usuario LEFT JOIN ImgPerfil i ON i.id_usuario = Cuidadores_Usu.id_usuario WHERE Cuidadores_Usu.id_cuidador = ?', [idCuidador]);
             return usuarios[0];
         }
         catch (error) {
@@ -70,7 +70,7 @@ class UsuariosDao {
 
     async imagenUsuario(imagen) {
         try{
-            let [resultado] = await pool.query('INSERT INTO Imgperfil (imagen, mimetype, id_usuario) VALUES (?, ?, ?)', [imagen.imagen, imagen.mimetype, imagen.id_usuario]);
+            let [resultado] = await pool.query('INSERT INTO ImgPerfil (imagen, mimetype, id_usuario) VALUES (?, ?, ?)', [imagen.imagen, imagen.mimetype, imagen.id_usuario]);
             return resultado.insertId;
         }
         catch(error){
