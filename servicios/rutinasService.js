@@ -32,6 +32,7 @@ class RutinasService{
     }
 
     async crearRutina(data){
+        data.fecha_creacion = new Date().toISOString().slice(0, 19).replace('T', ' ');
         const response = await rutinasDao.crearRutina(data);
         return response;
     }
