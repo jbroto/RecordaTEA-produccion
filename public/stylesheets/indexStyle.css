@@ -10,7 +10,7 @@ body {
     border-radius: 0.3em;
     cursor: pointer;
     overflow: hidden;
-    max-height: 300px;              /* Limita el tamaño máximo de la tarjeta */
+    max-height: 500px;              /* Limita el tamaño máximo de la tarjeta */
     display: flex;                  /* Centra el contenido si es necesario */
     flex-direction: column;
     justify-content: center;
