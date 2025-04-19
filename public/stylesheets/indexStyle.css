@@ -6,14 +6,19 @@ body {
 
 .card {
     background-color: #F8F6F4;
-    border-color: black;
-    border-width: 0.2em;
+    border: 0.2em solid black;
     border-radius: 0.3em;
     cursor: pointer;
-    -webkit-user-select: none; 
-    -moz-user-select: none;    
-    -ms-user-select: none;    
-    user-select: none;         
+    overflow: hidden;
+    max-height: 300px;              /* Limita el tamaño máximo de la tarjeta */
+    display: flex;                  /* Centra el contenido si es necesario */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .card:hover {
@@ -42,15 +47,11 @@ body {
 
 
 .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    -webkit-user-select: none; /* Chrome, Safari, Opera */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none;         /* Estándar */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
+
 
 .cross-icon {
     display: none;
@@ -173,3 +174,10 @@ a {
     text-align: justify;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (max-width: 992px) {
+    body {
+      display: block !important;
+    }
+  }
+  
