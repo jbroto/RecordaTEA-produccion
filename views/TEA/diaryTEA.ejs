@@ -13,7 +13,7 @@
             <!-- Botón Volver -->
             <div class="card no-border d-flex text-center">
               <button type="button" class="btn btn-light" data-bs-dismiss="modal">
-                <img src="/images/config/botonVolver.png" alt="Volver">
+                <img src="/images/config/botonVolver.png" alt="Volver" class="img-fluid">
               </button>
               <p class="card-title texto-boton">VOLVER</p>
             </div>
@@ -21,7 +21,7 @@
             <!-- Botón Confirmar Borrar -->
             <div class="card no-border d-flex text-center">
               <a id="confirm-DeleteBtn" class="btn btn-light">
-                <img src="/images/config/botonBorrar.png" alt="Borrar">
+                <img src="/images/config/botonBorrar.png" alt="Borrar" class="img-fluid">
               </a>
               <p class="card-title texto-boton">BORRAR</p>
             </div>
@@ -34,9 +34,9 @@
     <section class="container" id="columnaVistaDiario">
       <div class="row mt-4">
         <div class="d-flex justify-content-center">
-          <div class="card no-border d-flex text-center justify-content-center">
+          <div class="card no-border d-flex text-center justify-content-center boton-add-entry">
             <a class="nav-link" href="/diario/add-entrada">
-              <img class="card-img boton-add-entry" src="/images/config/add.png" alt="Añadir entrada al diario">
+              <img class="card-img img-fluid" src="/images/config/add.png" alt="Añadir entrada al diario">
             </a>
             <p class="card-title texto-boton">AÑADIR ENTRADA</p>
           </div>
@@ -59,7 +59,7 @@
 
               <% if (item.emocion !=null) { %>
                 <div class="card tamaño-lista-notexto m-0 align-items-start justify-content-start">
-                  <img class="card-img-top" src="<%= item.emocion %>">
+                  <img class="card-img-top img-fluid" src="<%= item.emocion %>">
                 </div>
                 <div class="vr mx-2" style="width: 4px; background-color: #000; height: 7em; border-radius: 10px;">
                 </div>
@@ -71,14 +71,14 @@
                         <%if (!config.picto_texto){%>
                           <div class="col-auto">
                             <div class="card tamaño-lista-notexto">
-                              <img class="card-img-top" src="<%= picto.enlace || picto.imagen %>">
+                              <img class="card-img-top img-fluid" src="<%= picto.enlace || picto.imagen %>">
                             </div>
                           </div>
                           <%}%>
                             <% if(config.picto_texto) { %>
                               <div class="col-auto">
                                 <div class="card p-1 mb-2" style="object-fit: contain; align-items: center;">
-                                  <img class="card-img-top tamaño-texto" src="<%= picto.enlace || picto.imagen %>">
+                                  <img class="card-img-top img-fluid tamaño-texto" src="<%= picto.enlace || picto.imagen %>">
                                   <h6 class="card-title nombre-pictograma text-center">
                                     <%= picto.texto %>
                                   </h6>
@@ -99,15 +99,15 @@
                     <div class="d-flex align-items-center gap-3 ms-auto">
 
                       <!-- VER ENTRADA -->
-                      <div class="card no-border tamaño-lista d-flex text-center">
+                      <div class="card no-border tamaño-lista d-flex text-center col-auto">
                         <a href="/diario/view-entry/<%= item.idEntrada %>">
-                          <img class="card-img-top" src="/images/config/ir.png" alt="Ver entrada del diario">
+                          <img class="card-img-top img-fluid" src="/images/config/ir.png" alt="Ver entrada del diario">
                         </a>
                         <p class="card-title texto-boton">VER</p>
                       </div>
 
                       <!-- BORRAR ENTRADA -->
-                      <div class="card no-border tamaño-lista d-flex text-center">
+                      <div class="card no-border tamaño-lista d-flex text-center col-auto">
                         <a href="#" class="open-delete-modal" data-id="<%= item.idEntrada %>" data-bs-toggle="modal"
                           data-bs-target="#confirmDeleteModal">
                           <img class="card-img-top" src="/images/config/botonBorrar.png" alt="Borrar entrada">

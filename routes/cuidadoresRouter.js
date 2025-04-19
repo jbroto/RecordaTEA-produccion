@@ -15,4 +15,5 @@ router.get('/logout', cuidadoresControlador.logout);
 
 router.post('/compartir-usuario', verificarSesion, verificarRolCuidador, cuidadoresControlador.compartirPerfil);
 
+
 module.exports = router;

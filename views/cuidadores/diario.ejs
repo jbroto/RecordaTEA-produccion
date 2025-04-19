@@ -92,10 +92,10 @@
                                         </small>
                                     </div>
                                     <p class="mb-1 texto-diario fw-bold">Último registro:</p>
-                                    <div class="img-registro gap-3">
+                                    <div class="img-registro img-fluid gap-3">
                                         <% if (elem.cuerpo === null){%>
                                             <% elem.pictos.forEach(function(p){%>
-                                                <img class="me-2" src="<%=p.enlace%>" alt="">
+                                                <img class="me-2 img-fluid" src="<%=p.enlace%>" alt="">
                                                <%}) %>
                                         <%} else {%>
                                             <div class="d-flex">
