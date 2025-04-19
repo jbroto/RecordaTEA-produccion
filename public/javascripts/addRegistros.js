@@ -28,7 +28,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         let card = $(this);
-        let column = card.closest(".col-lg-2, .col-md-3, .mt-3");
+        let column = card.closest(".col-lg-2,.col-auto, .mt-3");
         let contenedorRegistros = $("#contenedorRegistros");
 
         // Si la card está en el contenedor de registros, eliminarla
