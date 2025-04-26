@@ -90,7 +90,7 @@ $(document).ready(function () {
                     if (response.mensaje > 0) {
                         let tarjetaImagen = `
                         <div class="col-lg-2 col-md-3 mt-3">
-                            <div class="dflex">
+                            <div class="d-flex">
                                 <div class="card">
                                     <a href="">
                                         <img src="${url}" class="card-img img-fluid">

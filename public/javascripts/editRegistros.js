@@ -62,6 +62,9 @@ $(document).ready(function () {
         const column = card.closest('.col-lg-2, .col-auto');
         const contenedorRegistros = $('#contenedorRegistrosEdit');
         const clonedColumn = column.clone();
+        clonedColumn.removeClass('col-lg-2 col-md-3 mt-3').addClass('col-auto');
+        clonedColumn.find('.card').addClass('mb-3');
+        clonedColumn.find('img').addClass('tamaño-texto');
 
         // Añadir X si no existe
         if (clonedColumn.find('.cross-icon').length === 0) {
@@ -78,7 +81,7 @@ $(document).ready(function () {
     
     $('#contenedorRegistrosEdit').on('click', '.card', function (event) {
         event.stopPropagation();
-        $(this).closest('.col-lg-2, col-auto').remove();
+        $(this).closest('.col-lg-2, .col-auto').remove();
     });
 
 

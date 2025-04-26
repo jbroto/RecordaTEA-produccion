@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer dflex justify-content-between align-items-center">
+                    <div class="modal-footer d-flex justify-content-between align-items-center">
                         <div class="no-border col-lg-2 col-md-3 col-sm-4 text-center" style="cursor:pointer"
                             data-bs-dismiss="modal">
 
@@ -133,7 +133,7 @@
                                         </div>
                                         <% } else { %>
                                             <!-- TIPO DE TARJETA -->
-                                            <div class="col-auto">
+                                            <div class="col-lg-2 col-md-3 mt-3">
                                                 <div class="d-flex">
                                                     <div class="card" id="<%= item.id_tarjeta %>">
                                                         <img src="<%=item.imagen %>" class="card-img">
@@ -165,7 +165,7 @@
                                 <% vocabulario.forEach(function(item) { %>
                                     <% if (!item.imagen || item.imagen.length===0) { %>
                                         <!-- TIPO DE PICTOGRAMA -->
-                                        <div class="col-auto">
+                                        <div class="col-lg-2 col-md-3 mt-3">
                                             <div class="d-flex">
                                                 <div class="card" id="<%= item.idTarjeta %>">
                                                     <img src="<%= item.enlace %>" class="card-img">
@@ -177,7 +177,7 @@
                                         </div>
                                         <% } else { %>
                                             <!-- TIPO DE TARJETA -->
-                                            <div class="col-auto">
+                                            <div class="col-lg-2 col-md-3 mt-3">
                                                 <div class="d-flex">
                                                     <div class="card" id="<%= item.idTarjeta %>">
                                                         <img src="data:<%= item.mimetype %>;base64,<%= item.imagen.toString('base64') %>"
