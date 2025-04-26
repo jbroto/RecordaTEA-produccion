@@ -59,7 +59,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         const card = $(this);
-        const column = card.closest('.col-lg-2, .col-md-3, .mt-3');
+        const column = card.closest('.col-lg-2, .col-auto');
         const contenedorRegistros = $('#contenedorRegistrosEdit');
         const clonedColumn = column.clone();
 
@@ -78,7 +78,7 @@ $(document).ready(function () {
     
     $('#contenedorRegistrosEdit').on('click', '.card', function (event) {
         event.stopPropagation();
-        $(this).closest('.col-lg-2, .col-md-3, .mt-3').remove();
+        $(this).closest('.col-lg-2, col-auto').remove();
     });
 
 

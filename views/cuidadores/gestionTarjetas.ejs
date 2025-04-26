@@ -112,7 +112,7 @@
                                                 <% let hayElem=false; %>
                                                     <% if (data.voc.length> 0) { %>
                                                         <% data.voc.forEach(function(elem){%>
-                                                            <% if(elem.enlace){%>
+                                                            <% if(elem.enlace && !elem.imagen){%>
                                                                 <% hayElem=true; %>
                                                                     <div class="col-lg-2 col-md-3 mt-3">
                                                                         <div class="dflex">

@@ -138,8 +138,8 @@
                                 <% vocabulario.forEach(function(item) { %>
                                     <% if (!item.imagen || item.imagen.length===0) { %>
                                         <!-- TIPO DE PICTOGRAMA -->
-                                        <div class="col-lg-2 col-md-3 mt-3">
-                                            <div class="dflex">
+                                        <div class="col-auto">
+                                            <div class="d-flex">
                                                 <div class="card" id="<%= item.idTarjeta %>">
                                                     <img src="<%= item.enlace %>" class="card-img img-fluid">
                                                     <% if(config.picto_texto) { %>
@@ -152,8 +152,8 @@
                                         </div>
                                         <% } else { %>
                                             <!-- TIPO DE TARJETA -->
-                                            <div class="col-lg-2 col-md-3 mt-3">
-                                                <div class="dflex">
+                                            <div class="col-auto">
+                                                <div class="d-flex">
                                                     <div class="card" id="<%= item.idTarjeta %>">
                                                         <img src="data:<%= item.mimetype %>;base64,<%= item.imagen.toString('base64') %>"
                                                             class="card-img img-fluid">

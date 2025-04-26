@@ -88,7 +88,7 @@ $(document).ready(function () {
                             const divPicto = $('<div>').addClass('col-lg-2 col-md-3 mt-3 d-flex');
                             const card = $('<div>').addClass('card').addClass('gestion');
                             const enlace = $('<a>').attr('href', '');
-                            const imagen = $('<img>').attr('src', picto.enlace).attr('alt', consulta).addClass('card-img');
+                            const imagen = $('<img>').attr('src', picto.enlace).attr('alt', consulta).addClass('card-img img-fluid');
                             const fondo = $('<div>').addClass('add-picto');
                             const mas = $('<span>').attr('id', picto.id_arasaac).attr('data-enlace', picto.enlace).addClass('mas').text('+');
                             const titulo = $('<h5>').addClass('nombre-pictograma text-center').text(picto.keyword);
@@ -157,7 +157,7 @@ $(document).ready(function () {
                             const divPicto = $('<div>').addClass('col-lg-2 col-md-3 mt-3 d-flex');
                             const card = $('<div>').addClass('card').addClass('gestion');
                             const enlace = $('<a>').attr('href', '');
-                            const imagen = $('<img>').attr('src', picto.enlace).attr('alt', consulta).addClass('card-img');
+                            const imagen = $('<img>').attr('src', picto.enlace).attr('alt', consulta).addClass('card-img img-fluid');
                             const fondo = $('<div>').addClass('add-picto');
                             const mas = $('<span>').attr('id', picto.id_arasaac).attr('data-enlace', picto.enlace).addClass('mas').text('+');
                             const titulo = $('<h5>').addClass('nombre-pictograma text-center').text(picto.keyword);

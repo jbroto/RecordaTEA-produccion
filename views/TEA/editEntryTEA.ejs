@@ -2,8 +2,8 @@
     <link rel="icon" href="/images/config/favicon.png" type="image/x-icon">
 </head>
 
-<body>
-    <%- include("navbarTEA") %>
+    <body>
+        <%- include("navbarTEA") %>
         <div class="modal fade" id="emocionModal" tabindex="-1" aria-labelledby="emocionModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -121,23 +121,20 @@
                                 <% entrada.tarjetas.forEach(function(item) { %>
                                     <% if (!item.imagen || item.imagen.length===0) { %>
                                         <!-- TIPO DE PICTOGRAMA -->
-
-                                        <div class="col-auto col-lg-2">
-                                            <div class="card mb-3" id="<%= item.id_tarjeta %>"
-                                                style="object-fit: contain; align-items: center;">
-                                                <img src="<%= item.enlace %>" class="card-img tamaño-texto">
-                                                <% if(config.picto_texto) { %>
-                                                    <h5 class="nombre-pictograma text-center">
-                                                        <%= item.texto %>
-                                                    </h5>
-                                                    <% }%>
+                                        <div class="col-auto">
+                                            <div class="d-flex">
+                                                <div class="card mb-3" id="<%= item.id_tarjeta %>" style="object-fit: contain; align-items: center;">
+                                                    <img src="<%= item.enlace %>" class="card-img tamaño-texto">
+                                                    <% if(config.picto_texto)  { %>
+                                                        <h5 class="nombre-pictograma text-center"> <%= item.texto %></h5>
+                                                        <% }%>
+                                                </div>
                                             </div>
                                         </div>
-
                                         <% } else { %>
                                             <!-- TIPO DE TARJETA -->
-                                            <div class="col-lg-2 col-md-3 mt-3">
-                                                <div class="dflex">
+                                            <div class="col-auto">
+                                                <div class="d-flex">
                                                     <div class="card" id="<%= item.id_tarjeta %>">
                                                         <img src="<%=item.imagen %>" class="card-img">
                                                     </div>
@@ -150,7 +147,8 @@
                     <% if(!config.texto){%>
                         <!-- Modal para la emoción, donde cambiamos la imagen si existe una emoción -->
                         <div class="container d-flex justify-content-center align-items-center mt-3 col-lg-2 col-md-2 mt-3"
-                            data-bs-toggle="modal" data-bs-target="#emocionModal">
+                             data-bs-toggle="modal"
+                            data-bs-target="#emocionModal">
                             <div class="card" id="cardEmocionEdit">
                                 <!-- Si existe emocionSeleccionada, mostramos la imagen que se pasó, si no, mostramos la predeterminada -->
                                 <img src="<%= entrada.emocion || '/images/emotions/emociones.png' %>" class="card-img"
@@ -167,22 +165,20 @@
                                 <% vocabulario.forEach(function(item) { %>
                                     <% if (!item.imagen || item.imagen.length===0) { %>
                                         <!-- TIPO DE PICTOGRAMA -->
-                                        <div class="col-lg-2 col-md-3 mt-3">
-                                            <div class="dflex">
+                                        <div class="col-auto">
+                                            <div class="d-flex">
                                                 <div class="card" id="<%= item.idTarjeta %>">
                                                     <img src="<%= item.enlace %>" class="card-img">
-                                                    <% if(config.picto_texto) { %>
-                                                        <h5 class="nombre-pictograma text-center">
-                                                            <%= item.texto %>
-                                                        </h5>
+                                                    <% if(config.picto_texto)  { %>
+                                                        <h5 class="nombre-pictograma text-center"> <%= item.texto %></h5>
                                                         <% }%>
                                                 </div>
                                             </div>
                                         </div>
                                         <% } else { %>
                                             <!-- TIPO DE TARJETA -->
-                                            <div class="col-lg-2 col-md-3 mt-3">
-                                                <div class="dflex">
+                                            <div class="col-auto">
+                                                <div class="d-flex">
                                                     <div class="card" id="<%= item.idTarjeta %>">
                                                         <img src="data:<%= item.mimetype %>;base64,<%= item.imagen.toString('base64') %>"
                                                             class="card-img">
@@ -232,4 +228,4 @@
         <script src="https://unpkg.com/sortablejs-make/Sortable.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
         <script src="/javascripts/sortableCards.js"></script>
-</body>
+    </body>

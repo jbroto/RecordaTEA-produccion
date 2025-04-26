@@ -90,7 +90,7 @@ $(document).ready(function () {
                                         <small>${diaTexto}</small>
                                     </div>
                                     <p class="mb-1 texto-diario fw-bold">Último registro:</p>
-                                    <div class="img-registro gap-3">
+                                    <div class="img-registro img-fluid gap-3">
                                         ${elem.cuerpo ? `<div class="d-flex"><p class="align-items-center texto-entrada">${elem.cuerpo}</p></div>` : ""}
                                         ${elem.pictos ? elem.pictos.map(p => `<img src="${p.enlace}" alt="">`).join('') : ""}
                                     </div>

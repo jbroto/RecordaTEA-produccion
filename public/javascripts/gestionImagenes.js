@@ -93,7 +93,7 @@ $(document).ready(function () {
                             <div class="dflex">
                                 <div class="card">
                                     <a href="">
-                                        <img src="${url}" class="card-img">
+                                        <img src="${url}" class="card-img img-fluid">
                                     </a>
                                     <div class="remove-picto"></div>
                                     <span id="${response.mensaje}" class="trash">

@@ -81,7 +81,7 @@ $(document).ready(function () {
         let newCard = $(`
             <div class="col-lg-2 col-md-3 mt-3 d-flex">
                 <div class="card" id="${cardId}">
-                    <img src="${imgSrc}" class="card-img">
+                    <img src="${imgSrc}" class="card-img img-fluid">
                     <div class="remove-picto"></div>
                     <span class="trash"><i class="bi bi-trash3-fill"></i></span>
                     ${h5Text}
@@ -109,7 +109,7 @@ $(document).ready(function () {
         let newCard = $(`
             <div class="col-lg-2 col-md-3 mt-3 d-flex">
                 <div class="card" id="${cardId}">
-                    <img src="${imgSrc}" class="card-img">
+                    <img src="${imgSrc}" class="card-img img-fluid">
                     <div class="add-picto"></div>
                     <span class="mas">+</span>
                 </div>
