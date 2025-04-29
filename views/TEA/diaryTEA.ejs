@@ -58,8 +58,14 @@
             <div class="d-flex gap-3 mt-4" id="<%= item.idEntrada %>">
 
               <% if (item.emocion !=null) { %>
-                <div class="card tamaño-lista-notexto m-0 align-items-start justify-content-start">
-                  <img class="card-img-top img-fluid" src="<%= item.emocion %>">
+                <div class="card <%= config.picto_texto ? '' : 'tamaño-lista-notexto' %> m-0 align-items-center justify-content-center">
+
+                  <img class="card-img-top img-fluid <%= config.picto_texto ? 'tamaño-texto' : ''%>" src="<%= item.emocion %>">
+                  <% if(config.picto_texto) { %>
+                    <h6 class="card-title nombre-pictograma text-center">
+                      <%= item.emocion.split('/').pop().replace('.png', '').toUpperCase() %>
+                    </h6>
+                    <% } %>
                 </div>
                 <div class="vr mx-2" style="width: 4px; background-color: #000; height: 7em; border-radius: 10px;">
                 </div>

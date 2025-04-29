@@ -26,7 +26,8 @@ WHERE e.id_usuario = ?
   AND MONTH(e.fecha_registro) = ?  
   AND YEAR(e.fecha_registro) = ?   
 GROUP BY DATE(e.fecha_registro), e.tipo, e2.id, e2.cuerpo
-ORDER BY DATE(e.fecha_registro) DESC;
+ORDER BY DATE(e.fecha_registro) DESC
+LIMIT 1;
             `, [usuario, mes, año]);
 
 

@@ -16,31 +16,50 @@
                             <div class="col-lg-4 col-md-4 mt-3 d-flex">
                                 <div class="card" id="card-aburrido">
                                     <img src="/images/emotions/aburrido.png" class="card-img">
+                                    <% if(config.picto_texto)  { %>
+                                        <h5 class="nombre-pictograma text-center">ABURRIDO</h5>
+                                        <% }%>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 mt-3 d-flex">
                                 <div class="card" id="card-alegre">
                                     <img src="/images/emotions/alegre.png" class="card-img">
+                                    <% if(config.picto_texto)  { %>
+                                        <h5 class="nombre-pictograma text-center">ALEGRE</h5>
+                                        <% }%>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 mt-3 d-flex">
                                 <div class="card" id="card-asustado">
                                     <img src="/images/emotions/asustado.png" class="card-img">
+                                    <% if(config.picto_texto)  { %>
+                                        <h5 class="nombre-pictograma text-center">ASUSTADO</h5>
+                                        <% }%>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 mt-3 d-flex">
                                 <div class="card" id="card-enfadado">
                                     <img src="/images/emotions/enfadado.png" class="card-img">
+                                    <% if(config.picto_texto)  { %>
+                                        <h5 class="nombre-pictograma text-center">ENFADADO</h5>
+                                        <% }%>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 mt-3 d-flex">
                                 <div class="card" id="card-triste">
                                     <img src="/images/emotions/triste.png" class="card-img">
+                                    <% if(config.picto_texto)  { %>
+                                        <h5 class="nombre-pictograma text-center">TRISTE</h5>
+                                        <% }%>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 mt-3 d-flex">
                                 <div class="card" id="card-sorprendido">
                                     <img src="/images/emotions/sorprendido.png" class="card-img">
+                                    <% if(config.picto_texto)  { %>
+                                        <h5 class="nombre-pictograma text-center">SORPRENDIDO</h5>
+                                        <% }%>
                                 </div>
                             </div>
                         </div>
@@ -153,6 +172,11 @@
                                 <!-- Si existe emocionSeleccionada, mostramos la imagen que se pasó, si no, mostramos la predeterminada -->
                                 <img src="<%= entrada.emocion || '/images/emotions/emociones.png' %>" class="card-img"
                                     id="emocionSeleccionada">
+                                    <% if(config.picto_texto) { %>
+                                        <h6 class="card-title nombre-pictograma text-center" id="tituloEmocionSeleccionada">
+                                          <%= entrada.emocion.split('/').pop().replace('.png', '').toUpperCase() %>
+                                        </h6>
+                                        <% } %>
                             </div>
                         </div>
                         <%}%>

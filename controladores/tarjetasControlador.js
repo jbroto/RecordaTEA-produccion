@@ -64,7 +64,7 @@ class TarjetasControlador {
             if (this.resultadoArasaac.length > 0) {
                 for (let i = (18 * (pagina - 1)); i < index && i < (18 * pagina); i++) {
                     let picto = await tarjetasService.pictosArasaac(this.resultadoArasaac[i]._id);
-                    pictos.push({ id_arasaac: this.resultadoArasaac[i]._id, enlace: picto.image });
+                    pictos.push({ id_arasaac: this.resultadoArasaac[i]._id, enlace: picto.image, keyword: this.resultadoArasaac[i].keywords[0]?.keyword.toUpperCase() || '' });
                 }
             }
             res.status(200).send({ pictos: pictos, paginacion: pag });

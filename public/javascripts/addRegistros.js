@@ -117,15 +117,16 @@ $(document).ready(function () {
     $('#emocionModal .card').on('click', function (e) {
         e.preventDefault();
         if (emocionSeleccionadaAnt != null) {
-            emocionSeleccionadaAnt.find('img').removeClass('seleccionada');
+            emocionSeleccionadaAnt.removeClass('seleccionada');
         }
         emocionSeleccionadaAnt = $(this);
-        $(this).find('img').addClass('seleccionada');
+        $(this).addClass('seleccionada');
     });
 
     $("#addEmocionButton").on('click', function () {
         var img = emocionSeleccionadaAnt.find('img').attr('src');
         $("#emocionSeleccionada").attr('src', img);
+        $('#tituloEmocionSeleccionadaAdd').text(img.split('/').pop().replace('.png', '').toUpperCase());
         $('#emocionModal').modal('hide');
 
     })

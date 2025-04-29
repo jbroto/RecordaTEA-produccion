@@ -22,49 +22,50 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navegacion position-relative">
+    <nav class="navbar navbar-expand-lg navegacion">
         <div class="container-fluid">
+            <!-- Botón hamburguesa -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <!-- Izquierda -->
-                <ul class="navbar-nav">
-                    <% if (diary) { %>
-                        <li class="nav-item">
+            <!-- Contenedor colapsable -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="w-100 d-flex justify-content-between align-items-center">
+
+                    <!-- Izquierda -->
+                    <div>
+                        <% if (diary) { %>
                             <a class="nav-link text-center" href="/rutinas/mis-rutinas">
                                 <img src="/images/pictos/rutinas.png" alt="Rutinas" class="img-fluid navegacion-icono">
                                 <p class="card-title texto-boton">RUTINAS</p>
                             </a>
-                        </li>
-                        <% } else { %>
-                            <li class="nav-item">
+                            <% } else { %>
                                 <a class="nav-link text-center" href="/diario">
                                     <img src="/images/config/libro.png" alt="Diario digital"
-                                        class="nav-icon img-fluid navegacion-icono">
+                                        class="img-fluid navegacion-icono">
                                     <p class="card-title texto-boton">DIARIO</p>
                                 </a>
-                            </li>
-                            <% } %>
-                </ul>
+                                <% } %>
+                    </div>
 
-                <!-- Derecha -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <!-- Centro: nombre de usuario -->
+                    <div class="text-center texto-perfil">
+                        <%= usuario %>
+                    </div>
+
+                    <!-- Derecha -->
+                    <div>
                         <a class="nav-link text-center" href="/users/logout">
                             <img src="/images/config/salir.png" alt="Salir" class="img-fluid navegacion-icono">
                             <p class="card-title texto-boton">SALIR</p>
                         </a>
-                    </li>
-                </ul>
+                    </div>
 
-                <!-- Usuario centrado sin dropdown -->
-                <div class="position-absolute top-50 start-50 translate-middle texto-perfil">
-                    <%= usuario %>
                 </div>
             </div>
         </div>
     </nav>
+
 
 </body>

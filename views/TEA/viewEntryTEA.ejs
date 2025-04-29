@@ -32,7 +32,12 @@
             <% if (entrada.emocion != null) { %>
                 <div class="col-lg-2 col-md-3 col-sm-5 col-xs-6 ms-auto text-center">
                     <div class="card">
-                        <img class="card-img" src="<%= entrada.emocion %>">
+                        <img class="card-img img-fluid" src="<%= entrada.emocion %>">
+                        <% if(config.picto_texto) { %>
+                            <h6 class="card-title nombre-pictograma text-center">
+                              <%= entrada.emocion.split('/').pop().replace('.png', '').toUpperCase() %>
+                            </h6>
+                            <% } %>
                     </div>
                     <p class="card-title texto-boton">EMOCIÓN</p>
                 </div>

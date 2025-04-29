@@ -9,27 +9,30 @@ $(document).ready(function () {
     }
 
     function marcarEmocionSeleccionada(srcEmocion) {
-        $('#emocionModal .card img').removeClass('seleccionada');
+        $('#emocionModal .card').removeClass('seleccionada');
         const matchingCard = $(`#emocionModal .card img[src="${srcEmocion}"]`);
         if (matchingCard.length) {
-            matchingCard.addClass('seleccionada');
+            matchingCard.closest('.card').addClass('seleccionada');
         }
     }
 
 
     $('#emocionModal .card').on('click', function (e) {
         e.preventDefault();
-        $('#emocionModal .card img').removeClass('seleccionada');
-        $(this).find('img').addClass('seleccionada');
+        $('#emocionModal .card').removeClass('seleccionada');
+        $(this).addClass('seleccionada');
     });
 
     $("#addEmocionButton").on('click', function () {
-        const seleccionada = $('#emocionModal .card img.seleccionada').attr('src');
+        const seleccionada = $('#emocionModal .card.seleccionada img').attr('src');
 
+        console.log(seleccionada);
         if (seleccionada) {
             $("#emocionSeleccionada").attr('src', seleccionada);
+            $("#tituloEmocionSeleccionada").text(seleccionada.split('/').pop().replace('.png', '').toUpperCase());
         } else {
             $("#emocionSeleccionada").attr('src', defaultSrc);
+            $("#tituloEmocionSeleccionada").text(seleccionada.split('/').pop().replace('.png', '').toUpperCase());
         }
 
         $('#emocionModal').modal('hide');
