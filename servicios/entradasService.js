@@ -14,7 +14,23 @@ class EntradasService {
     async entradasMes(usuario, mes, año) {
         try {
             let entradasMes = await entradasDao.entradasMes(usuario, mes, año);
-            return entradasMes;
+
+
+            // En casos donde se repita el tema de que hay mas de una entrada con la misma fecha y hora
+            const fechasVistas = new Set();
+            const unicosPorFecha = entradasMes.filter(item => {
+                // Normalizar la fecha para solo comparar año-mes-día
+                const fechaNormalizada = new Date(item.fecha).toISOString().split('T')[0];
+
+                if (fechasVistas.has(fechaNormalizada)) {
+                    return false;
+                } else {
+                    fechasVistas.add(fechaNormalizada);
+                    return true;
+                }
+            });
+
+            return unicosPorFecha;
         }
         catch (error) {
             console.error('ERROR[EntradasService]: obtener entradas de un mes: ', error);
